@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomocounter</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+</head>
+<body>
+    <main>
+        <section id="settings-container">
+            <div id="settings">
+                <div id="settings-header">
+                    <i class="fi fi-rr-angle-left" onclick="userSettings()"></i>
+                    <h2>Change settings</h2>
+                </div>
+                <div id="text-minutes">
+                    <p>Time (minutes) </p>
+                </div>
+                <div class="settings-div">
+                    <div class="time-changer">
+                        <label for="pomodoro-changer">Pomodoro</label>
+                        <input id="pomodoro-changer" value="25" type="number" name="pomodoro-changer">
+                    </div>
+                    <div class="time-changer">
+                        <label for="short-changer">Short break</label>
+                        <input id="short-changer" value="5" type="number" name="short-changer">
+                    </div>
+                    <div class="time-changer">
+                        <label for="long-changer">Long break</label>
+                        <input id="long-changer" value="15" type="number" name="long-changer">
+                    </div>
+                </div>
+                <div id="settings-footer">
+                    <button id="save" class="settings-button" onclick="userSettings('save')">Save settings</button>
+                    <button id="cancel" class="settings-button" onclick="userSettings()">Cancel</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="container">
+            <div id="breaks-wrapper">
+                <button id="pomodoro" class="active" onclick="changeClass(this.id)">POMODORO</button>
+                <button id="short" class="break" onclick="changeClass(this.id)">SHORT BREAK</button>
+                <button id="long" class="break" onclick="changeClass(this.id)">LONG BREAK</button>
+                <i id="settings-button" class="fi fi-rr-settings" onclick="userSettings()"></i>
+            </div>
+            <div id="counter">
+                <h1 id="time-counter">25:00</h1>
+            </div>
+            <div id="buttons-wrapper">
+                <button id="start-pause" class="button" onclick="pauseTimer('start')">START TIMER</button>
+                <button id="restart" class="button" onclick="pauseTimer('reset')">RESTART TIMER</button>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="script.js"></script>
+</html>
