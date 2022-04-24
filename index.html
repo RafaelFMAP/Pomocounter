@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomocounter</title>
+    <title>Cromodoro</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
@@ -13,11 +13,16 @@
         <section id="settings-container">
             <div id="settings">
                 <div id="settings-header">
-                    <i class="fi fi-rr-angle-left" onclick="userSettings()"></i>
-                    <h2>Change settings</h2>
+                    <div id="header-wrapper">
+                        <i class="fi fi-rr-angle-left" onclick="userSettings()"></i>
+                        <h2>Change settings</h2>
+                    </div>
+                    <div id="header-button">
+                        <input type="checkbox" name="dark-mode" class="toggle-button" onclick="darkmode()">
+                    </div>
                 </div>
                 <div id="text-minutes">
-                    <p>Time (minutes) </p>
+                    <p>Time (minutes)</p>
                 </div>
                 <div class="settings-div">
                     <div class="time-changer">
@@ -40,7 +45,7 @@
             </div>
         </section>
 
-        <section id="container">
+        <section id="main-container">
             <div id="breaks-wrapper">
                 <button id="pomodoro" class="active" onclick="changeClass(this.id)">POMODORO</button>
                 <button id="short" class="break" onclick="changeClass(this.id)">SHORT BREAK</button>

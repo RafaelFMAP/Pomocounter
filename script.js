@@ -87,8 +87,8 @@ function changeTime(choice) {
 
 function changeClass(parametro) {
 
-    var elementWithClass = document.getElementsByClassName("active")
-    var elementId = (elementWithClass[0]).id;
+    const elementWithClass = document.getElementsByClassName("active")
+    const elementId = (elementWithClass[0]).id;
 
     document.getElementById(elementId).className = "break";
 
@@ -99,7 +99,7 @@ function changeClass(parametro) {
 
 function pauseTimer(parametro) {
     
-    var buttonStage = document.getElementById("start-pause").textContent
+    const buttonStage = document.getElementById("start-pause").textContent
 
     if(buttonStage == "START TIMER" && parametro == 'start') {
 
@@ -108,8 +108,8 @@ function pauseTimer(parametro) {
 
     } else if (parametro == "reset") {
         
-        var elementWithClass = document.getElementsByClassName("active")
-        var elementId = (elementWithClass[0]).id;
+        const elementWithClass = document.getElementsByClassName("active")
+        const elementId = (elementWithClass[0]).id;
         
         changeTime(elementId);
 
@@ -164,12 +164,72 @@ function defaultSettings() {
 }
 
 if (window.onload = window.localStorage.getItem("preferences") == null) {
-
+    
     defaultSettings();
-
+    
 } else {
     
     window.onload = changeTime(window.localStorage.getItem("preferences"))
     window.onload = changeTime("pomodoro");
-
+    
 }
+
+const html = document.querySelector("html");
+const checkBox = document.querySelector("input[name=dark-mode]")
+
+const getStyle = (element, style) =>
+    window.getComputedStyle(element).getPropertyValue(style )
+
+const initialColors  = {
+    bodyColor: getStyle(html, "--body-color"),
+    containerColor: getStyle(html, "--container-color"),
+    primaryColor: getStyle(html, "--primary-color"),
+    primaryHoverColor: getStyle(html, "--primary-hover-color"),
+    divColor: getStyle(html, "--div-color"),
+    textColor: getStyle(html, "--text-color"),
+    textHoverColor: getStyle(html, "--text-hover-color"),
+    textBackgroundColor: getStyle(html, "--text-background-color"),
+    textHoverBackgroundColor: getStyle(html, "--text-hover-background-color")
+}
+
+const whiteMode = {
+    bodyColor: "white",
+    containerColor: "hsl(0, 0%, 90%)",
+    primaryColor: "hsl(0, 100%, 60%)",
+    primaryHoverColor: "hsla(0, 100%, 60%, 80%)",
+    divColor: "hsl(0, 0%, 70%)",
+    textColor: "black",
+    textHoverColor: "hsla(0, 0%, 0%, 80%)",
+    textBackgroundColor: "hsl(0, 0%, 80%)",
+    textHoverBackgroundColor: "hsla(0, 0%, 80%, 80%)",
+    settingsBackgroundColor: "hsla(0, 0%, 100%, 50%)",
+    settingsLabelColor: "hsl(0, 0%, 20%)",
+    settingsShadowColor: "black",
+}
+
+const darkMode = {
+    bodyColor: "hsl(0, 0%, 10%)",
+    containerColor: "hsl(0, 0%, 15%)",
+    primaryColor: "hsl(116, 79%, 30%)",
+    primaryHoverColor: "hsla(116, 79%, 30%, 0.8)",
+    divColor: "hsl(0, 0%, 30%)",
+    textColor: "white",
+    textHoverColor: "hsla(0, 0%, 100%, 0.8)",
+    textBackgroundColor: "hsl(0, 0%, 20%)",
+    textHoverBackgroundColor: "hsla(0, 0%, 20%, 0.8)",
+    settingsBackgroundColor: "hsla(0, 0%, 0%, 50%)",
+    settingsLabelColor: "hsl(0, 0%, 80%)",
+    settingsShadowColor: "black",
+}
+
+const transformKey = key => "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
+
+const changeColors = (colors) => {
+    Object.keys(colors).map(key =>
+        html.style.setProperty(transformKey(key), colors[key])
+        )
+}
+
+checkBox.addEventListener("change", ({target}) => {     
+    target.checked ? changeColors(darkMode) : changeColors(whiteMode)
+})

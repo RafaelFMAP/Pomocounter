@@ -13,11 +13,32 @@ input[type=number]::-webkit-inner-spin-button {
     
 }
 
+input:checked[type=checkbox]{ 
+    -webkit-appearance: none;
+}
+
+/* --= Root =-- */
+
+html {
+    --body-color: white;
+    --container-color: hsl(0, 0%, 90%);
+    --primary-color: hsl(0, 100%, 60%);
+    --primary-hovercolor: hsla(0, 100%, 60%, 80%);
+    --div-color: hsl(0, 0%, 70%);
+    --text-color: black;
+    --text-hovercolor: hsla(0, 0%, 0%, 80%);
+    --text-backgroundcolor: hsl(0, 0%, 80%);
+    --text-hoverbackgroundcolor: hsla(0, 0%, 80%, 80%);
+    --settings-backgroundcolor: hsla(0, 0%, 100%, 0.5);
+    --settings-labelcolor: hsl(0, 0%, 25%);
+    --settings-shadow-color: white;
+}
+
 /* --= Body =-- */
 
 body {
-    background-color: hsl(0, 0%, 10%);
-    color: white;
+    background-color:  var(--body-color);
+    color: var(--text-color);
 }
 
 /* --= Main =-- */
@@ -30,28 +51,29 @@ main {
 
 /* --= Home page =-- */
 
-#container {
-    background-color: hsl(0, 0%, 15%);
-    border: 1px solid rgb(24, 139, 16);
-    box-shadow: 0px 0px 12px rgb(24, 139, 16);
+#main-container {
+    background-color: var(--container-color);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0px 0px 12px var(--primary-color);
     margin: auto;
-    padding: 6rem 9rem 9rem 9rem;
+    padding: 6rem 10rem 10rem 10rem;
     border-radius: 6px;
+    margin: auto;
 }
 
 #breaks-wrapper {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border-bottom: 1px solid hsla(0, 0%, 30%);
+    border-bottom: 1px solid var(--div-color);
     margin: 0 0 3rem 0;
 }
 
 .break {
-    color: white;
+    color: var(--text-color);
     margin: 0rem 0.5rem 0.5rem 0.5rem;
-    padding: 0.5rem 0.5rem;
-    background-color: hsl(0, 0%, 20%);
+    padding: 0.5rem;
+    background-color: var(--text-backgroundcolor);
     border-radius: 6px;
     font-size: 0.9rem;
     cursor: pointer;
@@ -60,10 +82,10 @@ main {
 .active {
     position: relative;
     margin: 0rem 0.5rem 0.5rem 0.5rem;
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem;
     bottom: -0.1em;
-    color: rgba(255, 255, 255, 0.8);
-    background-color: hsla(0, 0%, 20%, 80%);
+    color: var(--text-hovercolor);
+    background-color: var(--text-hoverbackgroundcolor);
     border-radius: 6px;
     font-size: 0.9rem;
     cursor: pointer;
@@ -71,15 +93,15 @@ main {
 
 .break:hover {
     position: relative;
-    color: rgba(255, 255, 255, 0.8);
-    background-color: hsla(0, 0%, 20%, 80%);
+    color: var(--text-hovercolor);
+    background-color: var(--text-hoverbackgroundcolor);
     bottom: -0.1em;
 }
 
 #settings-button {
     justify-content: center;
     position: relative;
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    margin: 0.5rem;
     align-items: center;
     font-size: 1.3rem;
     cursor: pointer;
@@ -90,7 +112,7 @@ main {
     bottom: -0.1rem;
 }
 
-#container #counter {
+#main-container #counter {
     margin-bottom: 2rem;
     padding: 1rem;
 }
@@ -103,24 +125,25 @@ main {
 
 #buttons-wrapper {
     display: flex;
+    justify-content: space-around;
+    margin: auto;
 }
 
 .button {
-    color: white;
-    background-color: hsl(0, 0%, 30%);
-    box-shadow: 0px 5px rgb(24, 139, 16);
+    color: var(--text-color);
+    background-color: var(--text-backgroundcolor);
+    box-shadow: 0px 5px var(--primary-color);
     border-radius: 6px;
     padding: 1rem 1.5rem;
-    margin: 1rem;
     font-size: 1.1em;
     cursor: pointer;
 }
 
 .button:hover {
     position: relative;
-    color: rgba(255, 255, 255, 0.8);
-    background-color: hsla(0, 0%, 30%, 80%);
-    box-shadow: 0px 5px rgba(24, 139, 16, 0.8);
+    color: var(--text-hovercolor);
+    background-color: var(--text-hoverbackgroundcolor);
+    box-shadow: 0px 5px var(--primary-hovercolor);
     bottom: -0.1em;
 }
 
@@ -138,15 +161,15 @@ main {
     opacity: 1;
     visibility: visible;
     z-index: 1;
-    background-color: hsla(0, 0%, 10%, 50%);
+    background-color: var(--settings-backgroundcolor);
     width: 100vw;
     height: 100vh;
 }
 
 .show #settings {
     display: block;
-    background-color: hsl(0, 0%, 10%);
-    box-shadow: 0 0 12px black;
+    background-color:  var(--body-color);
+    box-shadow: 0 0 12px var(--settings-shadowcolor);
     padding: 1.5rem 0rem 0rem 0rem;
     margin: auto;
     align-content: center;
@@ -155,27 +178,82 @@ main {
 
 #settings-header {
     display: flex;
-    justify-content: flex-start;
-    text-align: center;
-    align-items: center;
-    font-size: small;
-    border-bottom: 1px solid hsla(0, 0%, 30%);
+    justify-content: space-between;
+    border-bottom: 1px solid var(--text-backgroundcolor);
     padding: 0 0 1.5rem 0;
 }
 
-#settings-header i {
+#header-wrapper {
     display: flex;
-    margin: 0 1rem 0rem 1.5rem;
+    text-align: center;
+    align-items: center;
+    font-size: small;
+}
+
+#header-wrapper i {
+    display: flex;
+    padding: 0 1rem 0rem 0;
+    margin: 0 0 0 1.5rem;
     cursor: pointer;
+}
+
+#header-wrapper i:hover {
+    position: relative;
+    left: -5px;
+}
+
+#header-button{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: small;
+}
+
+input[type="checkbox"].toggle-button {
+    margin: 0 1.5rem 0 0;
+    width: 50px;
+    height: 25px;
+    border-radius: 16px;
+    appearance: none;
+    background-color: var(--body-color);
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    box-shadow: inset 0px 0px 4px 1px rgba(15, 15, 15, 0.60);
+}
+    
+
+input:checked[type="checkbox"].toggle-button {
+    background-color: hsl(0, 0%, 30%);
+}
+
+input[type="checkbox"]:before {
+    content: '';
+    width: 25px;
+    height: 25px;
+    background-color: hsl(0, 0%, 25%);
+    border: 1px solid hsl(0, 0%, 20%);
+    border-radius: 16px;
+    position: absolute;
+    transform: scale(1.1);
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+input:checked[type="checkbox"]:before {
+    left: 25px;
+    background-color: var(--text-color);
+    border: 1px solid var(--container-color);
 }
 
 .settings-div {
     display: flex;
     padding: 1.5rem 0rem;
-    border-bottom: 1px solid hsla(0, 0%, 30%);
+    border-bottom: 1px solid var(--text-backgroundcolor);
 }
 
-#text-minutes p{
+#text-minutes p {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -195,7 +273,7 @@ main {
 
 .time-changer label {
     margin-bottom: 0.3rem;
-    color: hsl(0, 0%, 80%);
+    color: var(--settings-labelcolor);
     font-weight: bold;
     width: 60%;
 }
@@ -204,8 +282,8 @@ main {
     padding: 0.5rem;
     border-radius: 6px;
     outline: 0;
-    background-color: hsl(0, 0%, 30%);
-    color:white;
+    background-color: var(--text-backgroundcolor);
+    color: var(--text-color);
     -webkit-appearance: none;
     font-size: 16px;
     width: 60%;
@@ -221,7 +299,7 @@ main {
     border-radius: 6px;
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
-    color:white;
+    color: white;
     cursor: pointer;
 }
 
@@ -235,6 +313,6 @@ main {
 }
 .settings-button:hover {
     position: relative;
-    color: rgba(255, 255, 255, 0.8);
+    color: hsla(100, 100%, 100%, 80%);
     bottom: -0.1em;
 }
